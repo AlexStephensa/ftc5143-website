@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/main.dart';
+import 'package:go_router/go_router.dart';
 
 class NavagationBar extends StatelessWidget {
   const NavagationBar({super.key});
@@ -23,19 +23,29 @@ class NavagationBar extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              TextButton(onPressed: (){
-              }, child: _NavBarItem('Home')),
+              TextButton(
+                  onPressed: () => context.go('/'), 
+                  child: _NavBarItem('Home')),
               SizedBox(
                 width: 30,
               ),
-              TextButton(onPressed: (){
-              }, child:_NavBarItem('About'),
+              TextButton(
+                onPressed: () => context.go('/scouting'),
+                child: _NavBarItem('Scouting'),
               ),
               SizedBox(
                 width: 30,
               ),
-              TextButton(onPressed: (){
-              }, child:_NavBarItem('Contact'),
+              TextButton(
+                onPressed: () => context.go('/about'),
+                child: _NavBarItem('About'),
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              TextButton(
+                onPressed: () => context.go('/contact'),
+                child: _NavBarItem('Contact'),
               ),
             ],
           ),
@@ -52,8 +62,8 @@ class _NavBarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-        title,
-        style: TextStyle(fontSize: 18, color: Colors.white),
+      title,
+      style: TextStyle(fontSize: 18, color: Colors.white),
     );
   }
 }
