@@ -12,18 +12,31 @@ class NavagationBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            height: 80,
+            height: 100,
             width: 150,
             child: Image.asset('assets/images/logo.png'),
+          ),
+          Text(
+            'FIRST Tech Challenge Team 5143',
+            style: TextStyle(fontSize: 24, color: Colors.white),
           ),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _NavBarItem('About'),
+              TextButton(onPressed: (){
+              }, child: _NavBarItem('Home')),
               SizedBox(
-                width: 60,
+                width: 30,
               ),
-              _NavBarItem('Contact'),
+              TextButton(onPressed: (){
+              }, child:_NavBarItem('About'),
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              TextButton(onPressed: (){
+              }, child:_NavBarItem('Contact'),
+              ),
             ],
           ),
         ],
@@ -38,15 +51,9 @@ class _NavBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: (){
-        _CurrentPage.state = 1;
-      },
-      child: Text(
+    return Text(
         title,
         style: TextStyle(fontSize: 18, color: Colors.white),
-      )
-      },
     );
   }
 }

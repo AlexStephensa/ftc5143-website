@@ -20,14 +20,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
-      home: HomeView(),
+      home: _CurrentPage(),
     );
   }
 }
 
 class _CurrentPage extends StatefulWidget {
   const _CurrentPage({super.key});
-  static const state = 0;
+  static var state = 0;
 
   @override
   State<_CurrentPage> createState() => _CurrentPageState();
