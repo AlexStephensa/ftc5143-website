@@ -6,50 +6,54 @@ class NavagationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 100,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(
-            height: 100,
-            width: 150,
-            child: Image.asset('assets/images/logo.png'),
-          ),
-          Text(
-            'FIRST Tech Challenge Team 5143',
-            style: TextStyle(fontSize: 24, color: Colors.white),
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
+      child: LayoutBuilder(
+        builder: (context,constraints) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton(
-                  onPressed: () => context.go('/'), 
-                  child: _NavBarItem('Home')),
               SizedBox(
-                width: 30,
+                height: 100 * constraints.maxHeight / 100,
+                width: 150,
+                child: Image.asset('assets/images/logo.png'),
               ),
-              TextButton(
-                onPressed: () => context.go('/scouting'),
-                child: _NavBarItem('Scouting'),
+              Text(
+                'FIRST Tech Challenge Team 5143',
+                style: TextStyle(fontSize: 24, color: Colors.white),
               ),
-              SizedBox(
-                width: 30,
-              ),
-              TextButton(
-                onPressed: () => context.go('/about'),
-                child: _NavBarItem('About'),
-              ),
-              SizedBox(
-                width: 30,
-              ),
-              TextButton(
-                onPressed: () => context.go('/contact'),
-                child: _NavBarItem('Contact'),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextButton(
+                      onPressed: () => context.go('/'), 
+                      child: _NavBarItem('Home')),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  TextButton(
+                    onPressed: () => context.go('/scouting'),
+                    child: _NavBarItem('Scouting'),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  TextButton(
+                    onPressed: () => context.go('/about'),
+                    child: _NavBarItem('About'),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  TextButton(
+                    onPressed: () => context.go('/contact'),
+                    child: _NavBarItem('Contact'),
+                  ),
+                ],
               ),
             ],
-          ),
-        ],
+          );
+        }
       ),
     );
   }
