@@ -9,32 +9,32 @@ class ContactView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-
       body: CenteredView(
         child: Column(
           children: [
             NavagationBar(),
-
-            Center(
-
-              child:Column( 
-                children: [
-            Text(
-              'Contact Us',
-              style: TextStyle(fontSize: 48, color: Colors.white),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Email: robotics5143@crxcs.org',
-              style: TextStyle(fontSize: 24, color: Colors.white),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Discord: (INSERT DISCORD LINK)',
-              style: TextStyle(fontSize: 24, color: Colors.white),
-            ),
-              ]
-              )
+            Expanded(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Contact Us',
+                      style: TextStyle(fontSize: 48, color: Colors.white),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Email: robotics5143@crxcs.org',
+                      style: TextStyle(fontSize: 24, color: Colors.white),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Discord: (INSERT DISCORD LINK)',
+                      style: TextStyle(fontSize: 24, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

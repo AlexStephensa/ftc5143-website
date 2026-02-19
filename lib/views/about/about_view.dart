@@ -12,17 +12,37 @@ class AboutView extends StatelessWidget {
       backgroundColor: Colors.black,
       body: CenteredView(
         child: Column(
-        children: [
-          
-          NavagationBar(),
-          Text(
-          'About Us',
-          style: TextStyle(color: Colors.white, fontSize: 24),
+          children: [
+            NavagationBar(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Text(
+                      'About Us',
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
+                    SizedBox(height: 20),
+                    Image.asset(
+                      'assets/images/meat_the_team.png',
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          height: 300,
+                          color: Colors.grey[800],
+                          child: const Center(
+                            child: Icon(Icons.image_not_supported, color: Colors.white, size: 50),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-          Image(image: AssetImage('assets/images/meat_the_team.png')),
-          
-          ]
-    )
       ),
     );
   }

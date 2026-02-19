@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/widgets/centered_view/centered_view.dart';
 import 'package:myapp/widgets/navagation_Bar/navagation_bar.dart';
-import 'package:myapp/widgets/scouting/scouting.dart';
+import 'package:myapp/widgets/scouting/scouting_widget.dart';
 
 class ScoutingView extends StatelessWidget {
   const ScoutingView({super.key});
@@ -13,9 +13,12 @@ class ScoutingView extends StatelessWidget {
       body: CenteredView(
         child: Column(
           children: [
-            NavagationBar(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 50),
+              child: NavagationBar(),
+            ),
             Expanded(
-              child: Scouting(),
+              child: ScoutingWidget(),
             ),
           ],
         ),

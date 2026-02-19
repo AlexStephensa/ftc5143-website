@@ -10,7 +10,6 @@ class NavagationBar extends StatefulWidget {
   State<NavagationBar> createState() => _NavagationBarState();
 }
 
-//TODO: make navbar menu work
 class _NavagationBarState extends State<NavagationBar> {
   @override
   Widget build(BuildContext context) {
@@ -37,59 +36,37 @@ class _NavagationBarState extends State<NavagationBar> {
                     ),
                   ],
                 ),
-                Builder(
-                  builder: (buttonContext) {
+                MenuAnchor(
+                  builder: (context, controller, child) {
                     return IconButton(
-                      icon: const Icon(Icons.menu, color: Colors.white),
-                      onPressed: () async {
-                        final button =
-                            buttonContext.findRenderObject() as RenderBox;
-                        final overlay =
-                            Overlay.of(buttonContext).context.findRenderObject()
-                                as RenderBox;
-                        final selectedRoute = await showMenu<String>(
-                          context: buttonContext,
-                          position: RelativeRect.fromRect(
-                            Rect.fromPoints(
-                              button.localToGlobal(
-                                Offset.zero,
-                                ancestor: overlay,
-                              ),
-                              button.localToGlobal(
-                                button.size.bottomRight(Offset.zero),
-                                ancestor: overlay,
-                              ),
-                            ),
-                            Offset.zero & overlay.size,
-                          ),
-                          items: const [
-                            PopupMenuItem<String>(
-                              value: '/',
-                              child: _NavBarItem('Home'),
-                            ),
-                            PopupMenuItem<String>(
-                              value: '/scouting',
-                              child: _NavBarItem('Scouting'),
-                            ),
-                            PopupMenuItem<String>(
-                              value: '/about',
-                              child: _NavBarItem('About'),
-                            ),
-                            PopupMenuItem<String>(
-                              value: '/contact',
-                              child: _NavBarItem('Contact'),
-                            ),
-                          ],
-                        );
-
-                        if (!buttonContext.mounted || selectedRoute == null) {
-                          return;
+                      onPressed: () {
+                        if (controller.isOpen) {
+                          controller.close();
+                        } else {
+                          controller.open();
                         }
-
-                        buttonContext.go(selectedRoute);
                       },
+                      icon: const Icon(Icons.menu, color: Colors.white),
                     );
                   },
+                  menuChildren: [
+                    MenuItemButton(
+                      onPressed: () => context.go('/'),
+                      child: const _NavBarItem('Home'),
+                    ),
+                    MenuItemButton(
+                      onPressed: () => context.go('/scouting'),
+                      child: const _NavBarItem('Scouting'),
+                    ),
+                    MenuItemButton(
+                      onPressed: () => context.go('/about'),
+                      child: const _NavBarItem('About'),
+                    ),
+                    MenuItemButton(
+                      onPressed: () => context.go('/contact'),
+                      child: const _NavBarItem('Contact'),
+                    ),
+                  ],
                 ),
               ],
             );
@@ -102,7 +79,7 @@ class _NavagationBarState extends State<NavagationBar> {
                   width: 150 * constraints.maxHeight / 100,
                   child: Image.asset('assets/images/logo.png'),
                 ),
-                Text(
+                const Text(
                   'FIRST Tech Challenge Team 5143',
                   style: TextStyle(fontSize: 24, color: Colors.white),
                 ),
@@ -111,28 +88,22 @@ class _NavagationBarState extends State<NavagationBar> {
                   children: [
                     TextButton(
                       onPressed: () => context.go('/'),
-                      child: _NavBarItem('Home'),
+                      child: const _NavBarItem('Home'),
                     ),
-                    SizedBox(
-                      width: 30,
-                    ),
+                    const SizedBox(width: 30),
                     TextButton(
                       onPressed: () => context.go('/scouting'),
-                      child: _NavBarItem('Scouting'),
+                      child: const _NavBarItem('Scouting'),
                     ),
-                    SizedBox(
-                      width: 30,
-                    ),
+                    const SizedBox(width: 30),
                     TextButton(
                       onPressed: () => context.go('/about'),
-                      child: _NavBarItem('About'),
+                      child: const _NavBarItem('About'),
                     ),
-                    SizedBox(
-                      width: 30,
-                    ),
+                    const SizedBox(width: 30),
                     TextButton(
                       onPressed: () => context.go('/contact'),
-                      child: _NavBarItem('Contact'),
+                      child: const _NavBarItem('Contact'),
                     ),
                   ],
                 ),
@@ -153,7 +124,8 @@ class _NavBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(fontSize: 18, color: Colors.white),
+      style: const TextStyle(fontSize: 18, color: Colors.white),
     );
   }
 }
+

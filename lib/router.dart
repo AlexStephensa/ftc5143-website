@@ -9,19 +9,19 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const HomeView(),
+      builder: (context, state) => HomeView(),
     ),
     GoRoute(
       path: '/about',
-      builder: (context, state) => const AboutView(),
+      builder: (context, state) =>  AboutView(),
     ),
     GoRoute(
       path: '/contact',
-      builder: (context, state) => const ContactView(),
+      builder: (context, state) =>  ContactView(),
     ),
     GoRoute(
       path: '/scouting',
-      builder: (context,state) => const ScoutingView(),
+      builder: (context,state) =>  ScoutingView(),
     )
   ],
 );

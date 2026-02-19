@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/widgets/centered_view/centered_view.dart';
+import 'package:myapp/widgets/home/home_widget.dart';
 import 'package:myapp/widgets/navagation_Bar/navagation_bar.dart';
-import 'package:myapp/widgets/scouting/scouting.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -16,7 +16,9 @@ class HomeView extends StatelessWidget {
             NavagationBar(),
             Expanded(
               child: Row(
-                children: [Scouting()],
+                children: [
+                  Expanded(child: About_home()),
+                ],
               ),
             ),
           ],
