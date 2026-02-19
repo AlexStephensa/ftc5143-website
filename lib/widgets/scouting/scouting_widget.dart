@@ -64,83 +64,89 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isNarrow = MediaQuery.of(context).size.width < 700;
+
     return Container(
       padding: const EdgeInsets.all(16),
       color: Colors.black,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Auto',
-            style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 12),
-          AspectRatio(
-            aspectRatio: _videoController.value.isInitialized ? _videoController.value.aspectRatio : 16 / 9,
-            child: _videoController.value.isInitialized
-                ? VideoPlayer(_videoController)
-                : const Center(
-                    child: CircularProgressIndicator(color: Colors.white),
-                  ),
-          ),
-          const SizedBox(height: 12),
-          DropdownButtonFormField<String>(
-            value: _selectedVideo,
-            dropdownColor: const Color(0xFF1B1B1B),
-            decoration: const InputDecoration(
-              filled: true,
-              fillColor: Color(0xFF1B1B1B),
-              border: OutlineInputBorder(),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Auto',
+              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
             ),
-            iconEnabledColor: Colors.white,
-            style: const TextStyle(color: Colors.white),
-            items: _autoVideos.keys
-                .map(
-                  (label) => DropdownMenuItem<String>(
-                    value: label,
-                    child: Text(label),
-                  ),
-                )
-                .toList(),
-            onChanged: _changeVideo,
-          ),
-          const SizedBox(height: 16),
-          const Text(
-            'Auto description goes here. Summarize starting position, scoring pattern, and any reliability notes.',
-            style: TextStyle(color: Colors.white70, fontSize: 16),
-          ),
-          const SizedBox(height: 24),
-          const Text(
-            'Teleop',
-            style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 12),
-          Expanded(
-            child: Scrollbar(
+            const SizedBox(height: 12),
+            AspectRatio(
+              aspectRatio: _videoController.value.isInitialized ? _videoController.value.aspectRatio : 16 / 9,
+              child: _videoController.value.isInitialized
+                  ? VideoPlayer(_videoController)
+                  : const Center(
+                      child: CircularProgressIndicator(color: Colors.white),
+                    ),
+            ),
+            const SizedBox(height: 12),
+            DropdownButtonFormField<String>(
+              value: _selectedVideo,
+              dropdownColor: const Color(0xFF2D2D2D),
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Color(0xFF2D2D2D),
+                border: OutlineInputBorder(),
+              ),
+              iconEnabledColor: Colors.white,
+              style: const TextStyle(color: Colors.white),
+              items: _autoVideos.keys
+                  .map(
+                    (label) => DropdownMenuItem<String>(
+                      value: label,
+                      child: Text(label),
+                    ),
+                  )
+                  .toList(),
+              onChanged: _changeVideo,
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Auto description goes here. Summarize starting position, scoring pattern, and any reliability notes.',
+              style: TextStyle(color: Colors.white70, fontSize: 16),
+            ),
+            const SizedBox(height: 24),
+            const Text(
+              'Teleop',
+              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 12),
+            Scrollbar(
               thumbVisibility: true,
               child: SingleChildScrollView(
-                child: DataTable(
-                  headingRowColor: WidgetStateProperty.all(const Color(0xFF1B1B1B)),
-                  dataRowColor: WidgetStateProperty.all(const Color(0xFF111111)),
-                  columns: const [
-                    DataColumn(label: _HeaderCell('Stat')),
-                    DataColumn(label: _HeaderCell('Value')),
-                  ],
-                  rows: _teleopStats
-                      .map(
-                        (row) => DataRow(
-                          cells: [
-                            DataCell(_BodyCell(row.label)),
-                            DataCell(_BodyCell(row.value)),
-                          ],
-                        ),
-                      )
-                      .toList(),
+                scrollDirection: Axis.horizontal,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minWidth: isNarrow ? 520 : 640),
+                  child: DataTable(
+                    headingRowColor: WidgetStateProperty.all(const Color(0xFF1B1B1B)),
+                    dataRowColor: WidgetStateProperty.all(const Color(0xFF111111)),
+                    columns: const [
+                      DataColumn(label: _HeaderCell('Stat')),
+                      DataColumn(label: _HeaderCell('Value')),
+                    ],
+                    rows: _teleopStats
+                        .map(
+                          (row) => DataRow(
+                            cells: [
+                              DataCell(_BodyCell(row.label)),
+                              DataCell(_BodyCell(row.value)),
+                            ],
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

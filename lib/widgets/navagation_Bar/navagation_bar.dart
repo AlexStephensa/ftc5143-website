@@ -36,37 +36,29 @@ class _NavagationBarState extends State<NavagationBar> {
                     ),
                   ],
                 ),
-                MenuAnchor(
-                  builder: (context, controller, child) {
-                    return IconButton(
-                      onPressed: () {
-                        if (controller.isOpen) {
-                          controller.close();
-                        } else {
-                          controller.open();
-                        }
-                      },
-                      icon: const Icon(Icons.menu, color: Colors.white),
-                    );
+                PopupMenuButton<String>(
+                  onSelected: (value) {
+                    context.go(value);
                   },
-                  menuChildren: [
-                    MenuItemButton(
-                      onPressed: () => context.go('/'),
-                      child: const _NavBarItem('Home'),
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: '/',
+                      child: Text('Home', style: TextStyle(color: Colors.black)),
                     ),
-                    MenuItemButton(
-                      onPressed: () => context.go('/scouting'),
-                      child: const _NavBarItem('Scouting'),
+                    const PopupMenuItem<String>(
+                      value: '/scouting',
+                      child: Text('Scouting', style: TextStyle(color: Colors.black)),
                     ),
-                    MenuItemButton(
-                      onPressed: () => context.go('/about'),
-                      child: const _NavBarItem('About'),
+                    const PopupMenuItem<String>(
+                      value: '/about',
+                      child: Text('About', style: TextStyle(color: Colors.black)),
                     ),
-                    MenuItemButton(
-                      onPressed: () => context.go('/contact'),
-                      child: const _NavBarItem('Contact'),
+                    const PopupMenuItem<String>(
+                      value: '/contact',
+                      child: Text('Contact', style: TextStyle(color: Colors.black)),
                     ),
                   ],
+                  icon: const Icon(Icons.menu, color: Colors.white),
                 ),
               ],
             );
@@ -124,8 +116,10 @@ class _NavBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: const TextStyle(fontSize: 18, color: Colors.white),
+      style: const TextStyle(fontSize: 18, color:  Colors.white),
     );
   }
 }
+
+
 
