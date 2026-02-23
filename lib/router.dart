@@ -1,9 +1,9 @@
 
 import 'package:go_router/go_router.dart';
-import 'package:myapp/views/about/about_view.dart';
-import 'package:myapp/views/contact/contact_view.dart';
-import 'package:myapp/views/home/home_view.dart';
-import 'package:myapp/views/scouting_view/scouting_view.dart';
+import 'package:Xcentrics/views/about/about_view.dart';
+import 'package:Xcentrics/views/contact/contact_view.dart';
+import 'package:Xcentrics/views/home/home_view.dart';
+import 'package:Xcentrics/views/scouting_view/scouting_view.dart';
 
 final router = GoRouter(
   routes: [

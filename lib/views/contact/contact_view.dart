@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/centered_view/centered_view.dart';
-import 'package:myapp/widgets/navagation_Bar/navagation_bar.dart';
+import 'package:Xcentrics/widgets/centered_view/centered_view.dart';
+import 'package:Xcentrics/widgets/navagation_Bar/navagation_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactView extends StatelessWidget {
   const ContactView({super.key});
@@ -28,10 +29,7 @@ class ContactView extends StatelessWidget {
                       style: TextStyle(fontSize: 24, color: Colors.white),
                     ),
                     SizedBox(height: 10),
-                    Text(
-                      'Discord: (INSERT DISCORD LINK)',
-                      style: TextStyle(fontSize: 24, color: Colors.white),
-                    ),
+                    TextButton(onPressed: launchDiscordInvite, child: const Text('Join our Discord', style: TextStyle(fontSize: 24, color: Colors.blue)),),
                   ],
                 ),
               ),
@@ -40,5 +38,11 @@ class ContactView extends StatelessWidget {
         ),
       ),
     );
+  }
+  Future<void> launchDiscordInvite() async{
+    final Uri uri = Uri.parse('https://discord.gg/cHaa76sK3Y'); // Replace with your actual invite link
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw 'Could not launch $uri';
+    }
   }
 }

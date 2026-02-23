@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/router.dart';
+import 'package:Xcentrics/router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Xcentrics());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Xcentrics extends StatelessWidget {
+  const Xcentrics({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'FTC Team 5143',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),

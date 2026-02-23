@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/centered_view/centered_view.dart';
-import 'package:myapp/widgets/home/home_widget.dart';
-import 'package:myapp/widgets/navagation_Bar/navagation_bar.dart';
+import 'package:Xcentrics/widgets/centered_view/centered_view.dart';
+import 'package:Xcentrics/widgets/home/home_widget.dart';
+import 'package:Xcentrics/widgets/navagation_Bar/navagation_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

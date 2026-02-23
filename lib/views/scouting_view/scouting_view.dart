@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/centered_view/centered_view.dart';
-import 'package:myapp/widgets/navagation_Bar/navagation_bar.dart';
-import 'package:myapp/widgets/scouting/scouting_widget.dart';
+import 'package:Xcentrics/widgets/centered_view/centered_view.dart';
+import 'package:Xcentrics/widgets/navagation_Bar/navagation_bar.dart';
+import 'package:Xcentrics/widgets/scouting/scouting_widget.dart';
 
 class ScoutingView extends StatelessWidget {
   const ScoutingView({super.key});

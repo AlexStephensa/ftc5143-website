@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/centered_view/centered_view.dart';
-import 'package:myapp/widgets/navagation_Bar/navagation_bar.dart';
+import 'package:Xcentrics/widgets/centered_view/centered_view.dart';
+import 'package:Xcentrics/widgets/navagation_Bar/navagation_bar.dart';
 
 
 class AboutView extends StatelessWidget {
