@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:video_player/video_player.dart';
 
 class ScoutingWidget extends StatefulWidget {
@@ -29,13 +30,15 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
   @override
   void initState() {
     super.initState();
-    _videoController = VideoPlayerController.networkUrl(
-      Uri.parse(_autoVideos[_selectedVideo]!),
-    )..initialize().then((_) {
-        if (mounted) {
-          setState(() {});
-        }
-      });
+    _videoController =
+        VideoPlayerController.networkUrl(
+            Uri.parse(_autoVideos[_selectedVideo]!),
+          )
+          ..initialize().then((_) {
+            if (mounted) {
+              setState(() {});
+            }
+          });
   }
 
   @override
@@ -72,11 +75,17 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
         children: [
           const Text(
             'Auto',
-            style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 28,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 12),
           AspectRatio(
-            aspectRatio: _videoController.value.isInitialized ? _videoController.value.aspectRatio : 16 / 9,
+            aspectRatio: _videoController.value.isInitialized
+                ? _videoController.value.aspectRatio
+                : 16 / 9,
             child: _videoController.value.isInitialized
                 ? VideoPlayer(_videoController)
                 : const Center(
@@ -112,7 +121,11 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
           const SizedBox(height: 24),
           const Text(
             'Teleop',
-            style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 28,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 12),
           Expanded(
@@ -120,8 +133,12 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
               thumbVisibility: true,
               child: SingleChildScrollView(
                 child: DataTable(
-                  headingRowColor: WidgetStateProperty.all(const Color(0xFF1B1B1B)),
-                  dataRowColor: WidgetStateProperty.all(const Color(0xFF111111)),
+                  headingRowColor: WidgetStateProperty.all(
+                    const Color(0xFF1B1B1B),
+                  ),
+                  dataRowColor: WidgetStateProperty.all(
+                    const Color(0xFF111111),
+                  ),
                   columns: const [
                     DataColumn(label: _HeaderCell('Stat')),
                     DataColumn(label: _HeaderCell('Value')),
@@ -139,6 +156,10 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
                 ),
               ),
             ),
+          ),
+          TextButton(
+            onPressed: () => context.go('/match-scouting'),
+            child: const Text('Go to Match Scouting'),
           ),
         ],
       ),
