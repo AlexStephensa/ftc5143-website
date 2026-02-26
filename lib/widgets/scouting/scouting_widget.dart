@@ -111,7 +111,7 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
             ),
             const SizedBox(height: 16),
             const Text(
-              'Auto description goes here. Summarize starting position, scoring pattern, and any reliability notes.',
+              'We have a strong auto this season, with consistent performance in both the close and far triangle zones. We reliably get 8 or 9 balls in auto, with a focus on compatibility with alliance partners. We have a slight preference for the close triangle, but can easily switch to the far triangle if needed.',
               style: TextStyle(color: Colors.white70, fontSize: 16),
             ),
             const SizedBox(height: 24),
