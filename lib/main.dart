@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:Xcentrics/router.dart';
+import 'package:xcentrics/router.dart';
+import 'package:xcentrics/services/appwrite_service.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  AppwriteService.instance.init();
   runApp(const Xcentrics());
 }
 
@@ -14,7 +17,7 @@ class Xcentrics extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'FTC Team 5143',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF121212)),
       ),
       routerConfig: router,
     );

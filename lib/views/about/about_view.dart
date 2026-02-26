@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:Xcentrics/widgets/centered_view/centered_view.dart';
-import 'package:Xcentrics/widgets/navagation_Bar/navagation_bar.dart';
+import 'package:xcentrics/widgets/centered_view/centered_view.dart';
+import 'package:xcentrics/widgets/navagation_Bar/navagation_bar.dart';
 
 
 class AboutView extends StatelessWidget {
@@ -9,7 +9,7 @@ class AboutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(0xFF121212),
       body: CenteredView(
         child: Column(
           children: [

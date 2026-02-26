@@ -1,4 +1,4 @@
-name: Xcentrics
+name: xcentrics
 description: "Ftc team 5143's website"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -32,7 +32,6 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   go_router: ^17.1.0
-  video_player: ^2.11.0
   url_launcher: ^6.3.2
   youtube_player_flutter: ^9.1.3
   appwrite: ^20.0.0
