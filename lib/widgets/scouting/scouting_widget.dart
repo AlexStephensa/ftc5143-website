@@ -135,17 +135,11 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
             LayoutBuilder(
               builder: (context, constraints) {
                 final bool isMobile = constraints.maxWidth < 700;
-                final double columnWidth = isMobile
-                    ? constraints.maxWidth
-                    : 300;
 
-                return Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 24,
-                  runSpacing: 12,
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: columnWidth,
+                    Expanded(
                       child: Column(
                         children: [
                           Text(
@@ -179,8 +173,8 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: columnWidth,
+                    SizedBox(width: isMobile ? 12 : 24),
+                    Expanded(
                       child: Column(
                         children: [
                           Text(
@@ -229,17 +223,11 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
             LayoutBuilder(
               builder: (context, constraints) {
                 final bool isMobile = constraints.maxWidth < 700;
-                final double columnWidth = isMobile
-                    ? constraints.maxWidth
-                    : 300;
 
-                return Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 24,
-                  runSpacing: 12,
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: columnWidth,
+                    Expanded(
                       child: Column(
                         children: [
                           Text(
@@ -273,8 +261,8 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: columnWidth,
+                    SizedBox(width: isMobile ? 12 : 24),
+                    Expanded(
                       child: Column(
                         children: [
                           Text(
