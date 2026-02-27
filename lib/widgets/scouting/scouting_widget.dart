@@ -17,7 +17,7 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
   };
 
   final List<_StatRow> _teleopStats = <_StatRow>[
-    _StatRow(label: 'Avg Cycles', value: '7.4'),
+    _StatRow(label: 'Prefered scoring position', value: 'top big triangle'),
     _StatRow(label: 'High Goals', value: '28'),
     _StatRow(label: 'Low Goals', value: '12'),
     _StatRow(label: 'Penalties', value: '2'),
@@ -53,7 +53,11 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
           children: [
             const Text(
               'Auto',
-              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 28,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 12),
             Column(
@@ -73,7 +77,11 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.image_not_supported, color: Colors.white54, size: 48),
+                              Icon(
+                                Icons.image_not_supported,
+                                color: Colors.white54,
+                                size: 48,
+                              ),
                               SizedBox(height: 8),
                               Text(
                                 'Image not found',
@@ -102,46 +110,221 @@ class _ScoutingWidgetState extends State<ScoutingWidget> {
               items: _autoImages.keys
                   .map(
                     (label) => DropdownMenuItem<String>(
-                  value: label,
-                  child: Text(label),
-                ),
-              )
+                      value: label,
+                      child: Text(label),
+                    ),
+                  )
                   .toList(),
               onChanged: _changeImage,
             ),
             const SizedBox(height: 16),
             const Text(
-              'We have a strong auto this season, with consistent performance in both the close and far triangle zones. We reliably get 8 or 9 balls in auto, with a focus on compatibility with alliance partners. We have a slight preference for the close triangle, but can easily switch to the far triangle if needed.',
+              'We have a strong auto this season, with consistent performance in both the big and small triangle zones. We reliably get 8 or 9 balls in auto, with a focus on compatibility with alliance partners. We have a slight preference for the big triangle, but can easily switch to the small triangle if needed.',
               style: TextStyle(color: Colors.white70, fontSize: 16),
             ),
             const SizedBox(height: 24),
             const Text(
               'Teleop',
-              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 28,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 12),
-            DataTable(
-              headingRowColor: WidgetStateProperty.all(const Color(0xFF1B1B1B)),
-              dataRowColor: WidgetStateProperty.all(const Color(0xFF111111)),
-              columns: const [
-                DataColumn(label: _HeaderCell('Stat')),
-                DataColumn(label: _HeaderCell('Value')),
-              ],
-              rows: _teleopStats
-                  .map(
-                    (row) => DataRow(
-                  cells: [
-                    DataCell(_BodyCell(row.label)),
-                    DataCell(_BodyCell(row.value)),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final bool isMobile = constraints.maxWidth < 700;
+                final double columnWidth = isMobile
+                    ? constraints.maxWidth
+                    : 300;
+
+                return Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 24,
+                  runSpacing: 12,
+                  children: [
+                    SizedBox(
+                      width: columnWidth,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Scoring Positions',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Small triangle',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Top big triangle (prefered)',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Big triangle',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: columnWidth,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Shooting Acuracy',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              '50%',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              '80%',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              '70%',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
-                ),
-              )
-                  .toList(),
+                );
+              },
+            ),
+            Text(
+              'Robot Specs',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 28,
+              ),
+            ),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final bool isMobile = constraints.maxWidth < 700;
+                final double columnWidth = isMobile
+                    ? constraints.maxWidth
+                    : 300;
+
+                return Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 24,
+                  runSpacing: 12,
+                  children: [
+                    SizedBox(
+                      width: columnWidth,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Parts',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Small triangle',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Size',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Weight',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: columnWidth,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Stats',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              '450 RPM',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              '17x17x14',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              '26 lbs',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(onPressed: () => context.go('/home'), child: Text('Scouting Home', style: TextStyle(color: Colors.white))),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    onPressed: () => context.go('/home'),
+                    child: Text(
+                      'Scouting Home',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
@@ -156,32 +339,4 @@ class _StatRow {
   final String value;
 
   const _StatRow({required this.label, required this.value});
-}
-
-class _HeaderCell extends StatelessWidget {
-  final String text;
-
-  const _HeaderCell(this.text);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-    );
-  }
-}
-
-class _BodyCell extends StatelessWidget {
-  final String text;
-
-  const _BodyCell(this.text);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: const TextStyle(color: Colors.white),
-    );
-  }
 }

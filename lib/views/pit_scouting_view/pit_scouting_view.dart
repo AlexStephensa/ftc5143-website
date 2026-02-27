@@ -251,13 +251,7 @@ class _PitScoutingViewState extends State<PitScoutingView> {
                               padding: const EdgeInsets.symmetric(vertical: 14),
                             ),
                             onPressed: () => context.go('/home'),
-                            child: _isSubmitting
-                                ? const SizedBox(
-                                height: 20,
-                                width: 20,
-                                child: CircularProgressIndicator(
-                                    strokeWidth: 2, color: Colors.black))
-                                : const Text('<- Go Back',
+                            child: const Text('<- Go Back',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                           ),
                         ],
